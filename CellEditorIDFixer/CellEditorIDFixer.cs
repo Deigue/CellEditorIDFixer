@@ -34,11 +34,17 @@ namespace CellEditorIDFixer
 
             foreach (var cellContext in state.LoadOrder.PriorityOrder.Cell().WinningContextOverrides())
             {
-                //bool worldSpaceCellFlag = false;
+                bool worldSpaceCellFlag = false;
                 var cell = cellContext.Record;
                 if ((cell.EditorID?.Contains("_") ?? false))
                 {
                     Console.WriteLine($"Cell EDID {cell.EditorID} in {cell?.FormKey.ModKey.FileName}");
+
+                    if (cell.Grid != null)
+                    {
+                        Console.WriteLine($">>> SKIPPED {cell.EditorID} as Worldspace CELL is currently unsupported.");
+                        worldSpaceCellFlag = true;
+                    }
 
                     /*
                     foreach (var groupItem in state.LoadOrder.PriorityOrder.Worldspace().WinningOverrides())
@@ -50,9 +56,9 @@ namespace CellEditorIDFixer
                             break;
                         }
                     }
-                    
-                    if (worldSpaceCellFlag) continue;
                     */
+
+                    if (worldSpaceCellFlag) continue;
 
                     var overridenCell = cellContext.GetOrAddAsOverride(state.PatchMod);
                     overridenCell.EditorID = overridenCell.EditorID.Replace("_", "");
