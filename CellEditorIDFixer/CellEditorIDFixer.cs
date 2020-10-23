@@ -39,7 +39,7 @@ namespace CellEditorIDFixer
                 var cell = cellContext.Record;
                 if ((cell.EditorID?.Contains("_") ?? false))
                 {
-                    Console.WriteLine($"Cell EDID {cell.EditorID} in {cell?.FormKey.ModKey.FileName}");
+                    Console.WriteLine($"Cell EDID {cell.EditorID} in {cell.FormKey.ModKey.FileName}");
 
                     if (cell.Grid != null)
                     {
@@ -69,7 +69,7 @@ namespace CellEditorIDFixer
                     else
                     {
                         var overridenCell = cellContext.GetOrAddAsOverride(state.PatchMod);
-                        overridenCell.EditorID = overridenCell.EditorID.Replace("_", "");
+                        overridenCell.EditorID = overridenCell.EditorID?.Replace("_", "");
                         counter++;
                     }
                 }
