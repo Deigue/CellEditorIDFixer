@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CellEditorIDFixer": {
+      "commandName": "Project",
+      "commandLineArgs": "run-patcher -d \"E:\\Testing\" -g SkyrimSE -l \"D:\\Skyrim\\Mod Organizer\\profiles\\Deigue 0.6.3\\Plugins.txt\" -o\"E:\\Overwrite\" -e \"D:\\Repos\\Synthesis\\Synthesis.Bethesda.GUI\\bin\\x64\\Debug\\netcoreapp3.1\\Data\""
+    }
+  }
+}

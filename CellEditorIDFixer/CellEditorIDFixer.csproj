@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Deigue</Authors>
     <Platforms>AnyCPU;x86;x64</Platforms>
+    <Description></Description>
   </PropertyGroup>
 
   <ItemGroup>
