@@ -7,6 +7,7 @@ namespace CellEditorIDFixer
 {
     public class CellEditorIDFixer
     {
+        
         public static int Main(string[] args)
         {
             return SynthesisPipeline.Instance.Patch<ISkyrimMod, ISkyrimModGetter>(
@@ -42,7 +43,7 @@ namespace CellEditorIDFixer
 
                     if (cell.Grid != null)
                     {
-                        Console.WriteLine($">>> SKIPPED {cell.EditorID} as Worldspace CELL is currently unsupported.");
+                        //Console.WriteLine($">>> SKIPPED {cell.EditorID} as Worldspace CELL is currently unsupported.");
                         worldSpaceCellFlag = true;
                     }
 
@@ -58,11 +59,18 @@ namespace CellEditorIDFixer
                     }
                     */
 
-                    if (worldSpaceCellFlag) continue;
-
-                    var overridenCell = cellContext.GetOrAddAsOverride(state.PatchMod);
-                    overridenCell.EditorID = overridenCell.EditorID.Replace("_", "");
-                    counter++;
+                    if (worldSpaceCellFlag)
+                    {
+                        var overridenCell = cellContext.GetOrAddAsOverride(state.PatchMod);
+                        overridenCell.EditorID = overridenCell.EditorID.Replace("_", "");
+                        counter++;
+                    }
+                    else
+                    {
+                        var overridenCell = cellContext.GetOrAddAsOverride(state.PatchMod);
+                        overridenCell.EditorID = overridenCell.EditorID.Replace("_", "");
+                        counter++;
+                    }
                 }
             }
 
