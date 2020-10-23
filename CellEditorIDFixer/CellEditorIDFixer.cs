@@ -38,7 +38,7 @@ namespace CellEditorIDFixer
                 var cell = cellContext.Record;
                 if ((cell.EditorID?.Contains("_") ?? false))
                 {
-                    Console.WriteLine($"Cell EDID {cell.EditorID} in {cell?.FormKey.ModKey.FileName}");
+                    Console.WriteLine($"Cell EDID {cell.EditorID} in {cell.FormKey.ModKey.FileName}");
 
                     if (cell.Grid != null)
                     {
