@@ -31,8 +31,8 @@ namespace CellEditorIDFixer
         {
             Console.WriteLine($"Running Cell Editor ID Fixer ...");
             
-            var counter = 0;
-
+            int counter = 0;
+            int worldCounter = 0;
             foreach (var cellContext in state.LoadOrder.PriorityOrder.Cell().WinningContextOverrides())
             {
                 bool worldSpaceCellFlag = false;
@@ -62,8 +62,9 @@ namespace CellEditorIDFixer
                     if (worldSpaceCellFlag)
                     {
                         var overridenCell = cellContext.GetOrAddAsOverride(state.PatchMod);
-                        overridenCell.EditorID = overridenCell.EditorID.Replace("_", "");
-                        counter++;
+                        
+                        //overridenCell.EditorID = overridenCell.EditorID.Replace("_", "");
+                        worldCounter++;
                     }
                     else
                     {
@@ -76,6 +77,7 @@ namespace CellEditorIDFixer
 
             Console.WriteLine();
             Console.WriteLine($"Made overrides for {counter} CELL records.");
+            Console.WriteLine($"Made overrides for {worldCounter} Worldspace CELL records.");
         }
     }
 }
