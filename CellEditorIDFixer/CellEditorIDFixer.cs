@@ -61,7 +61,7 @@ namespace CellEditorIDFixer
                     if (worldSpaceCellFlag) continue;
 
                     var overridenCell = cellContext.GetOrAddAsOverride(state.PatchMod);
-                    overridenCell.EditorID = overridenCell.EditorID.Replace("_", "");
+                    overridenCell.EditorID = overridenCell.EditorID?.Replace("_", "");
                     counter++;
                 }
             }
