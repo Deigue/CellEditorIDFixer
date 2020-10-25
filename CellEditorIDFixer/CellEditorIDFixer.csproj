@@ -19,7 +19,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mutagen.Bethesda" Version="0.18.14" />
+    <PackageReference Include="Mutagen.Bethesda" Version="0.18.16" />
     <PackageReference Include="Mutagen.Bethesda.Synthesis" Version="0.10.10" />
   </ItemGroup>
 

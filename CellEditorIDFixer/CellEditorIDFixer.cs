@@ -15,7 +15,7 @@ namespace CellEditorIDFixer
                 patcher: RunPatch,
                 new UserPreferences()
                 {
-                    AddImplicitMasters = false,
+                    //AddImplicitMasters = false,
                     //IncludeDisabledMods = true,
                     ActionsForEmptyArgs = new RunDefaultPatcher
                     {
@@ -59,11 +59,13 @@ namespace CellEditorIDFixer
                     }
                     */
 
+                    
                     if (worldSpaceCellFlag)
                     {
                         var overridenCell = cellContext.GetOrAddAsOverride(state.PatchMod);
-                        
-                        //overridenCell.EditorID = overridenCell.EditorID.Replace("_", "");
+                        overridenCell.EditorID = overridenCell.EditorID?.Replace("_", "");
+                        overridenCell.Persistent.Clear();
+                        overridenCell.Temporary.Clear();
                         worldCounter++;
                     }
                     else
