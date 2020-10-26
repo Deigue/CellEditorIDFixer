@@ -2,6 +2,8 @@
 
 Skyrim SE Mutagen Patcher to fix CELL Editor IDs containing underscores in them.
 
-### **NOTE:** Does not currently work with Worldspace CELLs.
+---
 
-Worldspace cells are temporarily not supported. They will be logged in the console to review, and will be excluded from the patch.
+> Note: A workaround has been implemented in order to support overriding Editor IDs for
+Worldspace cells. As of now, some additional searching is required to find the correct information for the Worldspace under which the Cells that are to be patched reside in. This
+will mean the patcher requires a bit longer to complete.

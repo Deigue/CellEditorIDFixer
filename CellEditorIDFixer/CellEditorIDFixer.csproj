@@ -5,11 +5,22 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Deigue</Authors>
     <Platforms>AnyCPU;x86;x64</Platforms>
+    <Description></Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mutagen.Bethesda" Version="0.18.13" />
-    <PackageReference Include="Mutagen.Bethesda.Synthesis" Version="0.10.9" />
+    <PackageReference Include="Mutagen.Bethesda" Version="0.18.16" />
+    <PackageReference Include="Mutagen.Bethesda.Synthesis" Version="0.10.10" />
   </ItemGroup>
 
 </Project>
