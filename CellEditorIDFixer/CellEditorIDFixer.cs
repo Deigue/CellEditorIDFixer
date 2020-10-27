@@ -35,8 +35,11 @@ namespace CellEditorIDFixer
             Console.WriteLine($"Running Cell Editor ID Fixer ...");
 
             int counter = 0;
-            int worldCounter = 0;
-            var worldContexts = state.LoadOrder.PriorityOrder.Worldspace().WinningContextOverrides();
+
+
+            /*
+            //int worldCounter = 0;
+            var worldContexts = state.LoadOrder.PriorityOrder.Worldspace().WinningContextOverrides(state.LinkCache);
             var cellWorldspaceMap = new Dictionary<FormKey, ModContext<ISkyrimMod, IWorldspace, IWorldspaceGetter>>();
 
             // Build Map to provide path to the winning worldspace context.
@@ -57,50 +60,22 @@ namespace CellEditorIDFixer
                             );
                     }
                 );
+            */
 
-            foreach (var cellContext in state.LoadOrder.PriorityOrder.Cell().WinningContextOverrides())
+            foreach (var cellContext in state.LoadOrder.PriorityOrder.Cell().WinningContextOverrides(state.LinkCache))
             {
-                bool worldSpaceCellFlag = false;
-                
                 var cell = cellContext.Record;
                 if ((cell.EditorID?.Contains("_") ?? false))
                 {
                     Console.WriteLine($"Cell EDID {cell.EditorID} in {cell.FormKey.ModKey.FileName}");
-
-                    if (cell.Grid != null)
-                    {
-                        worldSpaceCellFlag = true;
-                    }
-
-                    if (worldSpaceCellFlag)
-                    {
-
-                        if (cellWorldspaceMap.ContainsKey(cell.FormKey))
-                        {
-                            cellWorldspaceMap.TryGetValue(cell.FormKey, out var worldContext);
-                            worldContext.GetOrAddAsOverride(state.PatchMod);
-                            //Console.WriteLine($"Overwrote the worldspace {worldContext.Record.Name} ID:{worldContext.Record.FormKey}" +
-                            //    $" from {worldContext.ModKey.FileName} into the patch.");
-                        }
-
-                        var overridenCell = cellContext.GetOrAddAsOverride(state.PatchMod);
-                        overridenCell.EditorID = overridenCell.EditorID?.Replace("_", "");
-                        overridenCell.Persistent.Clear();
-                        overridenCell.Temporary.Clear();
-                        worldCounter++;
-                    }
-                    else
-                    {
-                        var overridenCell = cellContext.GetOrAddAsOverride(state.PatchMod);
-                        overridenCell.EditorID = overridenCell.EditorID?.Replace("_", "");
-                        counter++;
-                    }
+                    var overridenCell = cellContext.GetOrAddAsOverride(state.PatchMod);
+                    overridenCell.EditorID = overridenCell.EditorID?.Replace("_", "");
+                    counter++;
                 }
             }
 
             Console.WriteLine();
             Console.WriteLine($"Made overrides for {counter} CELL records.");
-            Console.WriteLine($"Made overrides for {worldCounter} Worldspace CELL records.");
         }
     }
 }
