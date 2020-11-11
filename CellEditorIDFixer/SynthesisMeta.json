@@ -1,6 +1,7 @@
 {
   "Nickname": "CellEditorIDFixer",
-  "HideByDefault": false,
-  "OneLineDescription": "Finds all Cell EDIDs having underscores, and fixes them by removing them.",
-  "LongDescription": "Finds all Cells in Interiors and Exterior worldspaces having underscores, and fixes them by removing them."
+  "Visibility": "IncludeButHide",
+  "OneLineDescription": "Removes underscores from cell EDIDs",
+  "LongDescription": "Finds all Cells in Interiors and Exterior worldspaces having underscores, and fixes the Editor Ids by removing the underscores.",
+  "PreferredAutoVersioning": "LatestDefaultBranch"
 }
